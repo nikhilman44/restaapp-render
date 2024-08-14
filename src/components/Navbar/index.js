@@ -54,7 +54,7 @@ const Navbar = () => {
             value={searchInput}
             onChange={onChangeSearchInput}
             className="navbar-search-input"
-            type="search"
+            type="text"
             placeholder="Enter Text"
           />
           <button

@@ -12,18 +12,18 @@ const MoviesList = props => {
 
         const roundedRating = parseFloat(voteAverage.toFixed(1))
         const text = overview.substring(0, 50).concat('...')
-        const posterUrl = `https://image.tmdb.org/t/p/w500/${posterPath}`
+        const posterUrl = `https://image.tmdb.org/t/p/w500${posterPath}`
 
         return (
           <li key={id} className="movie-items">
             <img className="movie-images" src={posterUrl} alt={title} />
             <div className="movie-items-title-rating-desp-card">
-              <p className="movie-titles">{title}</p>
-              <p className="movie-rating">
+              <h1 className="movie-titles">{title}</h1>
+              <h1 className="movie-rating">
                 {voteAverage}
                 <span className="movie-rating-span">Rating</span>
-              </p>
-              <p className="movie-desp">{text}</p>
+              </h1>
+              <h1 className="movie-desp">{text}</h1>
               <Link to={`/movie/${id}`}>
                 <button
                   id={id}

@@ -10,7 +10,6 @@ const MoviesList = props => {
       {moviesData.map(eachItem => {
         const {id, overview, posterPath, title, voteAverage} = eachItem
 
-        const roundedRating = parseFloat(voteAverage.toFixed(1))
         const text = overview.substring(0, 50).concat('...')
         const posterUrl = `https://image.tmdb.org/t/p/w500${posterPath}`
 

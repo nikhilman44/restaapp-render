@@ -132,10 +132,15 @@ const MovieDetails = () => {
   )
 
   const renderMovieDetailsView = () => {
-    const {voteAverage, posterPath, title, genres, releaseDate, overview} =
-      movieDetails
+    const {
+      voteAverage,
+      posterPath,
+      title,
+      genres,
+      releaseDate,
+      overview,
+    } = movieDetails
 
-    const roundedRating = parseFloat(voteAverage.toFixed(1))
     const posterUrl = `https://image.tmdb.org/t/p/w500/${posterPath}`
     const formattedDate = new Date(releaseDate).toLocaleDateString('en-US', {
       year: 'numeric',

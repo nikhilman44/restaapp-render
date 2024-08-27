@@ -85,6 +85,8 @@ const Home = () => {
     return renderApiFailureView()
   }
 
+  //  Lodaer
+
   const renderLoader = () => (
     <div className="loader-card">
       <Loader type="ThreeDots" height={60} width={60} color="#54ce77" />

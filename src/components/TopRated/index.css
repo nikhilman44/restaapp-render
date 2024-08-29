@@ -45,3 +45,37 @@
   cursor: pointer;
   outline: none;
 }
+
+.prev-next-button-card {
+  display: flex;
+  justify-content: flex-end;
+  width: 90%;
+  align-items: center;
+  gap: 10px;
+  margin-top: 0px;
+  margin-bottom: 30px;
+  @media screen and (min-width: 768px) {
+    margin-right: 36px;
+  }
+}
+
+.prev-next-button {
+  background-color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  height: 30px;
+  width: 60px;
+  color: #000000;
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+}
+
+.prev-next-page-count {
+  color: #ffffff;
+  font-family: 'Roboto';
+  font-size: 16px;
+  font-weight: 500;
+}

@@ -22,12 +22,13 @@ const SearchMovies = () => {
   } = useContext(MovieContext)
 
   const [searchMovieData, setSearchMovieData] = useState([])
+  const [currentPage, setCurrentPage] = useState(1)
 
   useEffect(() => {
     if (isSearchBtnClicked) {
       const fetchData = async () => {
         const apiKey = '546b7fec357161c04a1bacab281229ae'
-        const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${searchInput}&page=1`
+        const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${searchInput}&page=${currentPage}`
         const options = {
           method: 'GET',
         }
@@ -108,12 +109,40 @@ const SearchMovies = () => {
       <Loader type="ThreeDots" height={60} width={60} color="#54ce77" />
     </div>
   )
+  const onClickPrevBtn = () => {
+    if (currentPage > 1) {
+      setCurrentPage(prevState => prevState - 1)
+      updateSearchApiStatus(apiStatusObject.loading)
+    }
+  }
+
+  const onClickNextBtn = () => {
+    setCurrentPage(prevState => prevState + 1)
+    updateSearchApiStatus(apiStatusObject.loading)
+  }
 
   return (
     <div className="search-movie-card">
       {searchApiStatus === apiStatusObject.loading
         ? renderLoader()
         : renderApiStatusView()}
+      <div className="prev-next-button-card">
+        <button
+          className="prev-next-button"
+          type="button"
+          onClick={onClickPrevBtn}
+        >
+          Prev
+        </button>
+        <p className="prev-next-page-count">{currentPage}</p>
+        <button
+          className="prev-next-button"
+          type="button"
+          onClick={onClickNextBtn}
+        >
+          Next
+        </button>
+      </div>
     </div>
   )
 }

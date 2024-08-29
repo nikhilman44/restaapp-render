@@ -17,13 +17,14 @@ const apiStatusObject = {
 
 const TopRated = () => {
   const [popularMovieData, setPopularMovieData] = useState([])
+  const [currentPage, setCurrentPage] = useState(1)
   const [apiStatus, setApiStatus] = useState(apiStatusObject.loading)
   const {isSearchBtnClicked} = useContext(MovieContext)
 
   useEffect(() => {
     const fetchData = async () => {
       const apiKey = '546b7fec357161c04a1bacab281229ae'
-      const url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=en-US&page=1`
+      const url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=en-US&page=${currentPage}`
       const options = {
         method: 'GET',
       }
@@ -99,10 +100,41 @@ const TopRated = () => {
     return renderSuccessOrFailureView()
   }
 
+  const onClickPrevBtn = () => {
+    if (currentPage > 1) {
+      setCurrentPage(prevState => prevState - 1)
+      setApiStatus(apiStatusObject.loading)
+    }
+  }
+
+  const onClickNextBtn = () => {
+    setCurrentPage(prevState => prevState + 1)
+    setApiStatus(apiStatusObject.loading)
+  }
+
   return (
     <div className="top-rated-card">
       <Navbar />
       {isSearchBtnClicked === true ? <SearchMovies /> : renderApiStatusView()}
+      {isSearchBtnClicked !== true && (
+        <div className="prev-next-button-card">
+          <button
+            className="prev-next-button"
+            type="button"
+            onClick={onClickPrevBtn}
+          >
+            Prev
+          </button>
+          <p className="prev-next-page-count">{currentPage}</p>
+          <button
+            className="prev-next-button"
+            type="button"
+            onClick={onClickNextBtn}
+          >
+            Next
+          </button>
+        </div>
+      )}
     </div>
   )
 }

@@ -6,6 +6,11 @@
   width: 90%;
   @media screen and (min-width: 576px) {
     justify-content: flex-start;
+    margin-top: 30px;
+  }
+  @media screen and (min-width: 768px) {
+    justify-content: space-between;
+    margin-top: 50px;
   }
 }
 
@@ -20,13 +25,13 @@
   margin-bottom: 20px;
   list-style-type: none;
   @media screen and (min-width: 576px) {
-    margin: 10px;
     width: 29%;
+    margin: 10px;
+    margin-bottom: 0px;
   }
   @media screen and (min-width: 768px) {
     border-radius: 14px;
     width: 22%;
-    margin: 14px;
   }
 }
 
